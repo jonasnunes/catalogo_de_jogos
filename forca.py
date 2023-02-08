@@ -13,7 +13,6 @@ def jogar():
         print(f'\nVocê possui {maximo_de_tentativas} tentativas!')
 
         letras_corretas = list()
-        letras_erradas = list()
 
         chute = input('\nQual letra você escolhe? ')
 
