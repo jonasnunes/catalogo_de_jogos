@@ -63,7 +63,6 @@ def jogar():
         
         print('\nLetras já usadas: {}'.format(', '.join(letras_escolhidas)))
             
-        #print(f'\nA letra {chute} não faz parte da palavra secreta!')
         maximo_de_tentativas -= 1
         
         if maximo_de_tentativas == 0:
