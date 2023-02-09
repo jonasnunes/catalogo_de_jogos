@@ -7,7 +7,7 @@ def jogar():
     print('{:*^50}'.format(' Bem Vindo ao Jogo da Forca '))
     print('*' * 50)
 
-    palavras = [
+    palavras = (
         'amarelo', 'amiga', 'amor', 'ave', 'bolo', 'branco', 'cama', 'caneca', 'celular', 'copo',
         'doce', 'elefante', 'escola', 'estojo', 'faca', 'foto', 'garfo', 'geleia', 'girafa', 'janela',
         'limonada', 'noite', 'oculos', 'onibus', 'parque', 'passarinho', 'peixe', 'pijama', 'rato',
@@ -22,9 +22,9 @@ def jogar():
         'empenhado', 'esparadrapo', 'forca', 'galaxia', 'historia', 'magenta', 'manjericao', 'menta', 
         'moeda', 'palavra', 'pedreiro', 'pneumonia', 'pulmao', 'rotatoria', 'serenata', 'transeunte', 
         'trilogia'
-    ]
+    )
 
-    palavra_secreta = list(choice(palavras))
+    palavra_secreta = tuple(choice(palavras))
 
     letras_acertadas = list('_' * (len(palavra_secreta)))
     letras_escolhidas = list()
