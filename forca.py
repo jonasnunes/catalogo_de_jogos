@@ -43,18 +43,18 @@ def jogar():
             print(f'\nA letra {chute.upper()} não pertence a palavra secreta!')
             letras_escolhidas.append(chute.upper())
         
-        print(f'\nLetras escolhidas: {letras_escolhidas}')
+        print('\nLetras escolhidas: {}'.format(', '.join(letras_escolhidas)))
             
         index = 0
 
         for letra in palavra_secreta:
 
             if chute == letra:
-                letras_acertadas[index] = letra
+                letras_acertadas[index] = letra.upper()
 
             index += 1
         
-        print('\n', letras_acertadas)
+        print('\n', ' '.join(letras_acertadas))
 
         print()
         print('=' * 60)
