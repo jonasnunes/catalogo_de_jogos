@@ -27,7 +27,7 @@ def jogar():
     palavra_secreta = tuple(choice(palavras))
 
     letras_acertadas = list('_' * (len(palavra_secreta)))
-    letras_escolhidas = list()
+    letras_escolhidas = set()
     
     print('\nTente descobrir a palavra secreta!\n')
     print(' '.join(letras_acertadas))
@@ -42,12 +42,12 @@ def jogar():
         if chute in palavra_secreta:     
 
             print('\nVocê acertou essa letra! Tente acertar outra!')
-            letras_escolhidas.append(chute.upper())
+            letras_escolhidas.add(chute.upper())
         
         else:
 
             print(f'\nA letra {chute.upper()} não pertence a palavra secreta!')
-            letras_escolhidas.append(chute.upper())
+            letras_escolhidas.add(chute.upper())
         
         print('\nLetras escolhidas: {}'.format(', '.join(letras_escolhidas)))
             
