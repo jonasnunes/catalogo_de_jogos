@@ -21,53 +21,49 @@ def jogar():
     ]
 
     palavra_secreta = list(choice(palavras))
-    palavra_inteira = palavra_secreta.copy()
-    palavra_string = ''.join(palavra_inteira)
 
-    contador_indices = 0
-    
+    letras_acertadas = list('_' * (len(palavra_secreta)))
     letras_escolhidas = list()
-    barras = list('_' * len(palavra_secreta))
-    print(f'\nTente descobrir a palavra secreta: {palavra_string}!\n')
-
-    maximo_de_tentativas = len(palavra_secreta)
+    
+    print(f'\nTente descobrir a palavra secreta: {letras_acertadas}!\n')
 
     while True:
 
-        print('\n', barras)
-
-        print(f'\nVocê possui {maximo_de_tentativas} tentativas!')
-
         chute = input('\nQual letra você escolhe? ')
 
-        index = palavra_inteira.index(chute)
+        index = 0
 
         if chute in palavra_secreta:     
 
             print('\nVocê acertou essa letra! Tente acertar outra!')
             letras_escolhidas.append(chute.upper())
-            
-            while chute in palavra_secreta:
-                palavra_secreta.remove(chute)
-                barras.insert(int(chute), index)
-                barras.pop()
+        
+        else:
 
-            if len(palavra_secreta) == 0:
-                print('\nVocê descobriu a palavra secreta!')
-                print('\n', palavra_string)
-                break
-                 
-        elif chute not in palavra_inteira:    
             print(f'\nA letra {chute.upper()} não pertence a palavra secreta!')
             letras_escolhidas.append(chute.upper())
         
-        print('\nLetras já usadas: {}'.format(', '.join(letras_escolhidas)))
+        print(f'\nLetras escolhidas: {letras_escolhidas}')
             
-        maximo_de_tentativas -= 1
+        index = 0
+
+        for letra in palavra_secreta:
+
+            if chute == letra:
+                letras_acertadas[index] = letra
+
+            index += 1
         
-        if maximo_de_tentativas == 0:
-                print('\nVocê não conseguiu adivinhar a palavra secreta!\n')
-                break
+        print('\n', letras_acertadas)
+
+        print()
+        print('=' * 60)
+
+        if '_' not in letras_acertadas:
+            print('\nParabéns... Você ganhou o jogo!')
+            break
+    
+    print('\nFim do Jogo!\n')
 
 
 if __name__ == '__main__':
