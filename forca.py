@@ -8,32 +8,36 @@ def jogar():
     print('*' * 50)
 
     palavras = (
-        'amarelo', 'amiga', 'amor', 'ave', 'bolo', 'branco', 'cama', 'caneca', 'celular', 'copo',
-        'doce', 'elefante', 'escola', 'estojo', 'faca', 'foto', 'garfo', 'geleia', 'girafa', 'janela',
-        'limonada', 'noite', 'oculos', 'onibus', 'parque', 'passarinho', 'peixe', 'pijama', 'rato',
-        'umbigo', 'acender', 'afilhado', 'agnostico', 'ardiloso', 'aspero', 'assombracao', 'asterisco',
-        'balaustre', 'basquete', 'caminho', 'champanhe', 'chiclete', 'chuveiro', 'coelho', 'contexto', 
-        'convivencia', 'coracao', 'desalmado', 'eloquente', 'esfirra', 'esquerdo', 'filantropo', 
-        'gororoba', 'heterossexual', 'horrorizado', 'idiossincrasia', 'impacto', 'independencia', 
-        'jocoso', 'laurel', 'modernidade', 'oftamologista', 'otorrinolaringologista', 'panaceia', 
-        'paralelepipedo', 'pororoca', 'prognostico', 'quarentena', 'quimera', 'refeicao', 'reportagem', 
-        'sino', 'taciturno', 'temperanca', 'ufanismo', 'viscera', 'afobado', 'amendoim', 'banheiro', 
-        'caatinga', 'cachorro', 'campeonato', 'capricornio', 'catapora', 'corrupcao', 'crepusculo', 
-        'empenhado', 'esparadrapo', 'forca', 'galaxia', 'historia', 'magenta', 'manjericao', 'menta', 
-        'moeda', 'palavra', 'pedreiro', 'pneumonia', 'pulmao', 'rotatoria', 'serenata', 'transeunte', 
-        'trilogia'
+        'AMARELO', 'AMIGA', 'AMOR', 'AVE', 'BOLO', 'BRANCO', 'CAMA', 'CANECA', 'CELULAR', 'COPO',
+        'DOCE', 'ELEFANTE', 'ESCOLA', 'ESTOJO', 'FACA', 'FOTO', 'GARFO', 'GELEIA', 'GIRAFA', 'JANELA',
+        'LIMONADA', 'NOITE', 'OCULOS', 'ONIBUS', 'PARQUE', 'PASSARINHO', 'PEIXE', 'PIJAMA', 'RATO',
+        'UMBIGO', 'ACENDER', 'AFILHADO', 'AGNOSTICO', 'ARDILOSO', 'ASPERO', 'ASSOMBRACAO', 'ASTERISCO',
+        'BALAUSTRE', 'BASQUETE', 'CAMINHO', 'CHAMPANHE', 'CHICLETE', 'CHUVEIRO', 'COELHO', 'CONTEXTO', 
+        'CONVIVENCIA', 'CORACAO', 'DESALMADO', 'ELOQUENTE', 'ESFIRRA', 'ESQUERDO', 'FILANTROPO', 
+        'GOROROBA', 'HETEROSSEXUAL', 'HORRORIZADO', 'IDIOSSINCRACIA', 'IMPACTO', 'INDEPENDENCIA', 
+        'JOCOSO', 'LAUREL', 'MODERNIDADE', 'OFTAMOLOGISTA', 'OTORRINOLARINGOLOGISTA', 'PANACEIA', 
+        'PARALELEPIPEDO', 'POROROCA', 'PROGNOSTICO', 'QUARENTENA', 'QUIMERA', 'REFEICAO', 'REPORTAGEM', 
+        'SINO', 'TACITURNO', 'TEMPERANCA', 'UFANISMO', 'VISCERA', 'AFOBADO', 'AMENDOIM', 'BANHEIRO', 
+        'CAATINGA', 'CACHORRO', 'CAMPEONATO', 'CAPRICORNIO', 'CATAPORA', 'CORRUPCAO', 'CREPUSCULO', 
+        'EMPENHADO', 'ESPARADRAPO', 'FORCA', 'GALAXIA', 'HISTORIA', 'MAGENTA', 'MANJERICAO', 'MENTA', 
+        'MOEDA', 'PALAVRA', 'PEDREIRO', 'PNEUMONIA', 'PULMAO', 'ROTATORIA', 'SERENATA', 'TRANSEUNTE', 
+        'TRILOGIA'
     )
 
     palavra_secreta = tuple(choice(palavras))
 
     letras_acertadas = list('_' * (len(palavra_secreta)))
     letras_escolhidas = set()
+
+    maximo_de_tentativas = 5
     
     print('\nTente descobrir a palavra secreta!\n')
     print(' '.join(letras_acertadas))
     print()
 
     while True:
+
+        print(f'\nVocê tem {maximo_de_tentativas} tentativas!')
 
         chute = input('\nQual letra você escolhe? ')
 
@@ -48,6 +52,7 @@ def jogar():
 
             print(f'\nA letra {chute.upper()} não pertence a palavra secreta!')
             letras_escolhidas.add(chute.upper())
+            maximo_de_tentativas -= 1
         
         print('\nLetras escolhidas: {}'.format(', '.join(letras_escolhidas)))
             
@@ -67,6 +72,11 @@ def jogar():
 
         if '_' not in letras_acertadas:
             print('\nParabéns... Você ganhou o jogo!')
+            break
+
+        if maximo_de_tentativas == 0:
+            print('\nEsgotaram-se suas tentativas... Você perdeu!')
+            print('\nA palavra secreta era {}'.format(' '.join(palavra_secreta)))
             break
     
     print('\nFim do Jogo!\n')
