@@ -7,14 +7,12 @@ def jogar():
     print('{:*^50}'.format(' Bem Vindo ao Jogo da Forca '))
     print('*' * 50)
 
-    arquivo = open('./arquivos/palavras_forca.txt', 'r')
     palavras = []
 
-    for palavra in arquivo:
-        palavra = palavra.strip().upper()
-        palavras.append(palavra)
-
-    arquivo.close()
+    with open('./arquivos/palavras_forca.txt') as arquivo:
+        for palavra in arquivo:
+            palavra = palavra.strip().upper()
+            palavras.append(palavra)
 
     '''
         *** Usado para colocar todas as palavras de uma LISTA em maiúsculo ***
