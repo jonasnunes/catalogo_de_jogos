@@ -1,7 +1,11 @@
 from random import choice
 
 def jogar():
-    print('\nBem vindo ao Jogo da Forca\n')
+    
+    print()
+    print('*' * 50)
+    print('{:*^50}'.format(' Bem Vindo ao Jogo da Forca '))
+    print('*' * 50)
 
     palavras = [
         'amarelo', 'amiga', 'amor', 'ave', 'bolo', 'branco', 'cama', 'caneca', 'celular', 'copo',
@@ -25,7 +29,9 @@ def jogar():
     letras_acertadas = list('_' * (len(palavra_secreta)))
     letras_escolhidas = list()
     
-    print(f'\nTente descobrir a palavra secreta: {letras_acertadas}!\n')
+    print('\nTente descobrir a palavra secreta!\n')
+    print(' '.join(letras_acertadas))
+    print()
 
     while True:
 
