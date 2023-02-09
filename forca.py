@@ -39,19 +39,19 @@ def jogar():
 
         print(f'\nVocê tem {maximo_de_tentativas} tentativas!')
 
-        chute = input('\nQual letra você escolhe? ')
+        chute = input('\nQual letra você escolhe? ').upper().strip()
 
         index = 0
 
         if chute in palavra_secreta:     
 
             print('\nVocê acertou essa letra! Tente acertar outra!')
-            letras_escolhidas.add(chute.upper())
+            letras_escolhidas.add(chute)
         
         else:
 
-            print(f'\nA letra {chute.upper()} não pertence a palavra secreta!')
-            letras_escolhidas.add(chute.upper())
+            print(f'\nA letra {chute} não pertence a palavra secreta!')
+            letras_escolhidas.add(chute)
             maximo_de_tentativas -= 1
         
         print('\nLetras escolhidas: {}'.format(', '.join(letras_escolhidas)))
