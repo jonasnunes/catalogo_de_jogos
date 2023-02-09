@@ -7,25 +7,22 @@ def jogar():
     print('{:*^50}'.format(' Bem Vindo ao Jogo da Forca '))
     print('*' * 50)
 
-    palavras = (
-        'AMARELO', 'AMIGA', 'AMOR', 'AVE', 'BOLO', 'BRANCO', 'CAMA', 'CANECA', 'CELULAR', 'COPO',
-        'DOCE', 'ELEFANTE', 'ESCOLA', 'ESTOJO', 'FACA', 'FOTO', 'GARFO', 'GELEIA', 'GIRAFA', 'JANELA',
-        'LIMONADA', 'NOITE', 'OCULOS', 'ONIBUS', 'PARQUE', 'PASSARINHO', 'PEIXE', 'PIJAMA', 'RATO',
-        'UMBIGO', 'ACENDER', 'AFILHADO', 'AGNOSTICO', 'ARDILOSO', 'ASPERO', 'ASSOMBRACAO', 'ASTERISCO',
-        'BALAUSTRE', 'BASQUETE', 'CAMINHO', 'CHAMPANHE', 'CHICLETE', 'CHUVEIRO', 'COELHO', 'CONTEXTO', 
-        'CONVIVENCIA', 'CORACAO', 'DESALMADO', 'ELOQUENTE', 'ESFIRRA', 'ESQUERDO', 'FILANTROPO', 
-        'GOROROBA', 'HETEROSSEXUAL', 'HORRORIZADO', 'IDIOSSINCRACIA', 'IMPACTO', 'INDEPENDENCIA', 
-        'JOCOSO', 'LAUREL', 'MODERNIDADE', 'OFTAMOLOGISTA', 'OTORRINOLARINGOLOGISTA', 'PANACEIA', 
-        'PARALELEPIPEDO', 'POROROCA', 'PROGNOSTICO', 'QUARENTENA', 'QUIMERA', 'REFEICAO', 'REPORTAGEM', 
-        'SINO', 'TACITURNO', 'TEMPERANCA', 'UFANISMO', 'VISCERA', 'AFOBADO', 'AMENDOIM', 'BANHEIRO', 
-        'CAATINGA', 'CACHORRO', 'CAMPEONATO', 'CAPRICORNIO', 'CATAPORA', 'CORRUPCAO', 'CREPUSCULO', 
-        'EMPENHADO', 'ESPARADRAPO', 'FORCA', 'GALAXIA', 'HISTORIA', 'MAGENTA', 'MANJERICAO', 'MENTA', 
-        'MOEDA', 'PALAVRA', 'PEDREIRO', 'PNEUMONIA', 'PULMAO', 'ROTATORIA', 'SERENATA', 'TRANSEUNTE', 
-        'TRILOGIA'
-    )
+    arquivo = open('./arquivos/palavras_forca.txt', 'r')
+    palavras = []
 
-    palavra_secreta = tuple(choice(palavras))
+    for palavra in arquivo:
+        palavra = palavra.strip().upper()
+        palavras.append(palavra)
 
+    arquivo.close()
+
+    '''
+        *** Usado para colocar todas as palavras de uma LISTA em maiúsculo ***
+        palavra_secreta = [palavra.upper() for palavra in palavras]
+    '''
+    palavra_secreta = list(choice(palavras))
+
+    # letras_acertadas = ['_' for letra in palavra_secreta]
     letras_acertadas = list('_' * (len(palavra_secreta)))
     letras_escolhidas = set()
 
